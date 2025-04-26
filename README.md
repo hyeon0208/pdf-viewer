@@ -1,7 +1,7 @@
 # PDF Viewer
 
-This program extracts bookmarks and page contents from PDF documents and supports the following features.
-
+This program is a GUI program that can be run locally to conveniently view PDF documents. <br>
+Extract bookmarks and page content from PDF documents to support the following features:
 > ⭐️ **Features**
 - Go directly to the page you are looking for through keyword search
 - View and access PDF bookmarks in tree format
