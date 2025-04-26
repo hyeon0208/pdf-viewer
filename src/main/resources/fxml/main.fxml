@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.pdfviewer.view.PDFViewController"
+            prefHeight="800.0" prefWidth="1200.0">
+
+    <!-- Top Toolbar -->
+    <top>
+        <VBox spacing="5">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <!-- Menu Toolbar -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <!-- File Related Buttons -->
+                <Button fx:id="openFileButton" text="Open File" onAction="#openFile"/>
+                <Button fx:id="closeFileButton" text="Close File" disable="true" onAction="#closeFile"/>
+                <Separator orientation="VERTICAL"/>
+
+                <!-- Zoom Buttons -->
+                <Button fx:id="zoomInButton" text="Zoom In" disable="true" onAction="#handleZoomIn"/>
+                <Button fx:id="zoomOutButton" text="Zoom Out" disable="true" onAction="#handleZoomOut"/>
+                <Button fx:id="resetZoomButton" text="Reset Zoom" disable="true" onAction="#handleResetZoom"/>
+                <Separator orientation="VERTICAL"/>
+
+                <!-- Page Navigation Buttons -->
+                <Button fx:id="firstPageButton" text="First" disable="true" onAction="#goToFirstPage"/>
+                <Button fx:id="prevPageButton" text="Previous" disable="true" onAction="#goToPrevPage"/>
+                <Button fx:id="nextPageButton" text="Next" disable="true" onAction="#goToNextPage"/>
+                <Button fx:id="lastPageButton" text="Last" disable="true" onAction="#goToLastPage"/>
+                <Separator orientation="VERTICAL"/>
+
+                <!-- Page Input Field -->
+                <Label text="Page:"/>
+                <TextField fx:id="pageInputField" prefWidth="60" disable="true" promptText="Number" onAction="#handlePageInput"/>
+                <Label text="/"/>
+                <Label fx:id="pageInfoLabel" text="0 / 0"/>
+            </HBox>
+
+            <!-- Search Area -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Search:"/>
+                <TextField fx:id="searchField" promptText="Enter search text..." HBox.hgrow="ALWAYS" disable="true" onAction="#handleSearch"/>
+            </HBox>
+
+            <!-- Status Bar -->
+            <HBox>
+                <Label fx:id="statusLabel" text="No PDF selected." HBox.hgrow="ALWAYS"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Left: Bookmarks and Search Results Area -->
+    <left>
+        <VBox prefWidth="300" spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <TabPane VBox.vgrow="ALWAYS">
+                <Tab text="Bookmarks" closable="false">
+                    <TreeView fx:id="bookmarksTreeView" VBox.vgrow="ALWAYS"/>
+                </Tab>
+                <Tab text="Search Results" closable="false">
+                    <ListView fx:id="searchResultsListView" VBox.vgrow="ALWAYS"/>
+                </Tab>
+            </TabPane>
+        </VBox>
+    </left>
+
+    <!-- Center: PDF Display Area -->
+    <center>
+        <ScrollPane fx:id="pdfScrollPane" fitToWidth="true" pannable="true">
+            <VBox fx:id="pageContainer" alignment="TOP_CENTER" style="-fx-background-color: #f0f0f0;">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>
