@@ -18,6 +18,7 @@ import lombok.Setter;
 @Table(name = "pdf_documents")
 @NoArgsConstructor
 public class PDFDocument {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pdf_document_seq")
     @SequenceGenerator(
