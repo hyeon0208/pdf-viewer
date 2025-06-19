@@ -46,6 +46,6 @@ public class PDFAsyncService {
         BufferedImage bufferedImage = pdfRenderer.renderImage(pageIndex, scale, ImageType.RGB);
         Image image = SwingFXUtils.toFXImage(bufferedImage, null);
 
-        imageCacheManager.addCacheOf(pageIndex, image);
+        imageCacheManager.addCache(pageIndex, image);
     }
 }

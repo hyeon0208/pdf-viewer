@@ -71,7 +71,7 @@ public class PDFRender {
         BufferedImage bufferedImage = pdfRenderer.renderImage(pageIndex, scale, ImageType.RGB);
         Image image = SwingFXUtils.toFXImage(bufferedImage, null);
 
-        cacheManager.addCacheOf(pageIndex, image);
+        cacheManager.addCache(pageIndex, image);
         return image;
     }
 
